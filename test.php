@@ -1,5 +1,7 @@
 <html>
 <body>
+    
+<!-- if user presses the buttom then it confirms the Booking -->
 <?php
 
 $id=$_POST['id'];
