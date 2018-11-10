@@ -1,4 +1,6 @@
-
+<?php
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,7 +13,7 @@
 
 <style>
 
-    * {
+        * {
         margin: 0px;
         padding: 0px;
     }
@@ -112,17 +114,19 @@
         button{
             border:none;
             border-radius:10px;
-            color:#353535;
-            background: #dd1f78;
+            color:#000000;
+            background: #ff33ff;
             padding:9px;
             margin:20px;
-           
-            
+            align:center;    
         }
-
         
-
-
+        button:hover{
+            color:black;
+            background-color: rgb(17, 247, 197);
+            cursor: pointer;
+        }
+        
 </style>
     
     <img src="pic.jpg" >
@@ -146,7 +150,7 @@
                 <th>Status</th>
             </tr> 
 
-<?php 
+            <?php 
                  
               $username = "";
               $email    = "";
@@ -169,6 +173,7 @@
                   {
                       while($row= mysqli_fetch_assoc($results))
                       {
+                         $_SESSION['id'] =$row["bookid"] ;
                           echo  "<tr><td>" . $row["bookid"] ."</td><td>". $row["hotelid"] ."</td><td>" .$row["phone"] ."</td><td>" .$row["pkgno"] ."</td><td>" .$row["Date"]."</td><td>" .$row["noofppl"]."</td><td>" .$row["noofdays"]."</td><td>" .$row["cost"]."</td><td>" .$row["status"]. "</td></tr>";
                       }
                       echo "</table>";  
@@ -181,5 +186,20 @@
               }
 
               mysqli_close($db);
+              
 
-            ?>            
+            ?>    
+
+            <div style="margin-top:100px;"></div>
+
+            <form class="input" action="status.php" method="post">
+   
+                <button type="submit" name="sub_pkg"><h3>Change Status<h3></button>
+            </form>
+            
+        </div>
+    </div>
+     
+
+</body>
+</html>     
