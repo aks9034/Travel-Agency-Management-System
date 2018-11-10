@@ -1,3 +1,5 @@
+<!-- check the status and all the booking details -->
+
 <?php
     session_start();
 ?>
